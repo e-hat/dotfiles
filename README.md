@@ -1,2 +1,5 @@
-# my-.vimrc
-My .vimrc for sharing between computers.
+# Instructions for future me
+* Remember to install `vim-plug`. You can get that (here)[https://github.com/junegunn/vim-plug]. 
+* Then run `:PlugInstall`.
+* Run `:CocConfig` and copypaste the file in this repo there.
+* You probably have to `stack install` some things from (here)[http://marco-lopes.com/articles/Vim-and-Haskell-in-2019/] if you're doing Haskell dev.
