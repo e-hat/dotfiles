@@ -3,6 +3,7 @@ set number
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-H> <C-W><C-H>
+nnoremap <C-L> <C-W><C-L>
 set encoding=utf-8
 
 set tabstop=4
@@ -14,7 +15,13 @@ set autoindent
 let mapleader = "," " map leader to comma
 set showcmd
 
-set hlsearch
+set nohlsearch
+set incsearch
+set so=5
+
+" BECAUSE TMUX SAYS SO: https://github.com/tmux/tmux/issues/699 
+set background=dark
+set t_Co=256
 
 nmap <leader>h :noh<CR>
 nmap <leader>rt :REPLToggle<CR>
@@ -30,6 +37,10 @@ nmap <C-o> <i><CR>
 
 " color 80th column @comp40
 set colorcolumn=80
+
+" no more esc for vimming
+inoremap jk <Esc>
+inoremap kj <Esc>
 
 " specific tabs for Haskell
 function! SetHaskellPrefs()
@@ -47,7 +58,14 @@ endfunction
 
 autocmd FileType make call SetMakefilePrefs() 
 
-colorscheme jellybeans
+autocmd BufWritePost package.yaml call Hpack()
+
+function Hpack()
+  let err = system('hpack ' . expand('%'))
+  if v:shell_error
+    echo err
+  endif
+endfunction
 
 call plug#begin()
 
@@ -59,6 +77,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 Plug 'sillybun/vim-repl'
+Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 

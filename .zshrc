@@ -2,13 +2,13 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/ehatfield/.oh-my-zsh"
+export ZSH="/home/eddie/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="af-magic"
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -74,6 +74,13 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+export PATH=~/.local/bin:$PATH
+export PATH=~/node_install/node-v14.17.0-linux-x64/bin:$PATH
+export PATH=~/matlab_install/dest/bin/glnxa64:$PATH
+
+export XM_ADDR="94:DB:56:E0:CE:EF"
+xm setup > /dev/null &
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -97,15 +104,13 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="vim ~/.zshrc"
+alias vimconfig="vim ~/.vimrc"
+alias tmuxconfig="vim ~/.tmux.conf"
+[ -f "/home/eddie/.ghcup/env" ] && source "/home/eddie/.ghcup/env" # ghcup-env
+alias reload="source ~/.zshrc"
+alias jadx-gui="~/dev/third_party/jadx/build/jadx/bin/jadx-gui"
 
-alias editvcfg="vim ~/.vimrc"
-alias editzcfg="vim ~/.zshrc"
-alias dtv="deactivate"
-alias goto=". goto"
-alias cnct="ssh ehatfi01@homework.cs.tufts.edu"
-alias cpdf="cp ~/.zshrc ~/dev/dotfiles; cp ~/.vimrc ~/dev/dotfiles; cp ~/.vim/coc-settings.json ~/dev/dotfiles; cp ~/.local/bin/goto ~/dev/dotfiles"
-export PATH=$PATH:~/.local/bin
-export PATH=$PATH:~/dev/tree-sitter/target/release
+set -o vi
 
+tmux
