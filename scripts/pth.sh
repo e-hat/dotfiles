@@ -16,3 +16,4 @@ if [ -z "$(grep "$sentinel" "$cfg_path")" ] ; then
 fi
 
 sed -i "s*$sentinel*$sentinel\nexport PATH=$1:\$PATH*" "$cfg_path"
+source ~/.zshrc
