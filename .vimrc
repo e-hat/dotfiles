@@ -12,7 +12,7 @@ set shiftwidth=4
 set autoindent
 
 " LEADER KEY
-let mapleader = "," " map leader to comma
+let mapleader = "\'" " map leader to single quote
 set showcmd
 
 set nohlsearch

@@ -74,9 +74,11 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+# I should automate this somehow
 export PATH=~/.local/bin:$PATH
 export PATH=~/node_install/node-v14.17.0-linux-x64/bin:$PATH
 export PATH=~/matlab_install/dest/bin/glnxa64:$PATH
+export PATH=~/bin:$PATH
 
 export XM_ADDR="94:DB:56:E0:CE:EF"
 xm setup > /dev/null &
@@ -110,6 +112,8 @@ alias tmuxconfig="vim ~/.tmux.conf"
 [ -f "/home/eddie/.ghcup/env" ] && source "/home/eddie/.ghcup/env" # ghcup-env
 alias reload="source ~/.zshrc"
 alias jadx-gui="~/dev/third_party/jadx/build/jadx/bin/jadx-gui"
+alias z="zsh"
+alias info="info --vi-keys"
 
 set -o vi
 
